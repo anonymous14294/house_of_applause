@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samsara - House of Applause</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Neutrals with Teal Accent -->
+    <!-- Application Structure Plan: The application uses a tab-based navigation model to present the different award categories. This was chosen over a linear document scroll to allow users to quickly access the specific information they are interested in (e.g., details of the 'GOAT' award) without needing to parse unrelated content. The main view provides a high-level overview and directs users to the three core award types. Each award type has its own detailed view, which includes a visual process flow diagram and, where applicable, an interactive chart. This structure prioritizes user-driven exploration and makes the dense information of the report digestible and easy to compare. -->
+    <!-- Visualization & Content Choices: 
+        - Report Info: Award Categories -> Goal: Organize/Compare -> Viz/Method: Tabbed navigation with cards -> Interaction: Click to switch content -> Justification: Allows non-linear exploration of awards.
+        - Report Info: Approval Process -> Goal: Explain Flow -> Viz/Method: HTML/CSS process diagram -> Interaction: Static visual guide -> Justification: More intuitive than text, avoids forbidden SVG/Mermaid.
+        - Report Info: Performance Metrics -> Goal: Compare -> Viz/Method: Bar Chart -> Interaction: Hover for tooltips -> Justification: Standard, clear way to compare quantitative data. Library: Chart.js.
+        - Report Info: Program Benefits -> Goal: Inform -> Viz/Method: Grid of cards -> Interaction: Static display -> Justification: Clear and scannable presentation of key takeaways.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .tab-active {
+            border-color: #0d9488; /* teal-600 */
+            background-color: #ccfbf1; /* teal-100 */
+            color: #134e4a; /* teal-900 */
+            font-weight: 600;
+        }
+        .tab-inactive {
+            border-color: transparent;
+            background-color: #f1f5f9; /* slate-100 */
+            color: #475569; /* slate-600 */
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-stone-50 text-slate-800">
+
+    <div class="container mx-auto p-4 sm:p-6 lg:p-8">
+        
+        <header class="text-center mb-8 md:mb-12">
+            <h1 class="text-3xl md:text-4xl font-bold text-teal-800 mb-2">House of Applause - Team Recognition & Reward Program</h1>
+            <p class="text-lg text-slate-600 max-w-3xl mx-auto">An interactive guide to our proposed framework for celebrating outstanding performance and fostering a culture of appreciation.</p>
+        </header>
+
+        <main>
+            <div class="bg-white rounded-xl shadow-lg p-6 md:p-8">
+                
+                <div class="mb-8">
+                    <h2 class="text-2xl font-bold text-slate-700 mb-3">Award Categories</h2>
+                    <p class="text-slate-600 mb-6">
+                        This program is built on three pillars of recognition, each designed to acknowledge different types of contributions, from immediate 'in-the-moment' excellence to sustained high performance over time. Select an award category below to explore its purpose, criteria, and process in detail.
+                    </p>
+                    <div class="border-b border-slate-200">
+                        <nav class="-mb-px flex space-x-2 sm:space-x-4" aria-label="Tabs">
+                            <button id="tab-spot" class="tab-btn whitespace-nowrap py-3 px-4 border-b-2 font-medium text-sm rounded-t-lg transition-colors duration-200">
+                                ✨ Spot Awards
+                            </button>
+                            <button id="tab-monthly" class="tab-btn whitespace-nowrap py-3 px-4 border-b-2 font-medium text-sm rounded-t-lg transition-colors duration-200">
+                                🏆 Monthly Awards
+                            </button>
+                            <button id="tab-quarterly" class="tab-btn whitespace-nowrap py-3 px-4 border-b-2 font-medium text-sm rounded-t-lg transition-colors duration-200">
+                                🐐 Quarterly Awards
+                            </button>
+                        </nav>
+                    </div>
+                </div>
+
+                <div id="content-container">
+                </div>
+
+            </div>
+
+            <div class="mt-8 md:mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white rounded-xl shadow-lg p-6 md:p-8">
+                    <h2 class="text-2xl font-bold text-slate-700 mb-4">Program Benefits</h2>
+                    <p class="text-slate-600 mb-6">Implementing this structured program is an investment in our team, expected to yield significant returns in morale, performance, and retention.</p>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-6 w-6 rounded-full bg-teal-100 text-teal-700 flex items-center justify-center">✓</div>
+                            <p class="ml-3 text-slate-700"><strong class="font-semibold">Increased Motivation & Engagement:</strong> Fostering a sense of value and recognition for hard work.</p>
+                        </div>
+                        <div class="flex items-start">
+                             <div class="flex-shrink-0 h-6 w-6 rounded-full bg-teal-100 text-teal-700 flex items-center justify-center">✓</div>
+                            <p class="ml-3 text-slate-700"><strong class="font-semibold">Enhanced Performance:</strong> Aligning individual efforts with key metrics like CSAT.</p>
+                        </div>
+                        <div class="flex items-start">
+                             <div class="flex-shrink-0 h-6 w-6 rounded-full bg-teal-100 text-teal-700 flex items-center justify-center">✓</div>
+                            <p class="ml-3 text-slate-700"><strong class="font-semibold">Improved Retention:</strong> Creating a positive work culture that reduces attrition.</p>
+                        </div>
+                         <div class="flex items-start">
+                             <div class="flex-shrink-0 h-6 w-6 rounded-full bg-teal-100 text-teal-700 flex items-center justify-center">✓</div>
+                            <p class="ml-3 text-slate-700"><strong class="font-semibold">Reinforcement of Values:</strong> Highlighting and rewarding behaviors that reflect our core principles.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-6 md:p-8">
+                    <h2 class="text-2xl font-bold text-slate-700 mb-4">Implementation Next Steps</h2>
+                    <p class="text-slate-600 mb-6">Upon approval, we will proceed with the following actions to bring this program to life.</p>
+                    <ol class="list-decimal list-inside space-y-3 text-slate-700">
+                        <li>Finalize monetary reward amounts.</li>
+                        <li>Develop detailed nomination and approval guidelines.</li>
+                        <li>Establish a clear internal communication plan.</li>
+                        <li>Set up performance tracking and reporting mechanisms.</li>
+                        <li>Define the format for award announcements.</li>
+                    </ol>
+                </div>
+            </div>
+        </main>
+
+        <footer class="text-center mt-12 text-slate-500 text-sm">
+            <p>Proposal for Team Member Recognition & Reward Program</p>
+        </footer>
+
+    </div>
+
+    <script>
+        const awardsData = {
+            spot: {
+                title: 'Spot Awards',
+                icon: '✨',
+                purpose: 'To provide immediate recognition for exceptional efforts, specific achievements, or outstanding contributions that occur on an ad-hoc basis and deserve prompt acknowledgment.',
+                details: {
+                    Nature: 'Non-monetary',
+                    Reward: 'Certificate, team lunch, company merchandise',
+                    Frequency: 'Ad-hoc'
+                },
+                criteria: [
+                    'Demonstration of exceptional effort on a task or project.',
+                    'Going above and beyond regular duties to assist a colleague or customer.',
+                    'Innovative problem-solving or a significant contribution.',
+                    'Exemplifying core company values in a demonstrable way.',
+                    'Successful completion of a challenging short-term assignment.'
+                ],
+                process: [
+                    { name: 'Nomination', detail: 'Any team member can nominate a colleague with a clear justification.' },
+                    { name: 'Review', detail: 'Nominee\'s direct manager reviews the submission against criteria.' },
+                    { name: 'Approval', detail: 'Manager approves the award.' }
+                ]
+            },
+            monthly: {
+                title: 'Monthly Awards (Tesla, MVP)',
+                icon: '🏆',
+                purpose: 'To recognize sustained high performance and outstanding customer satisfaction within a given month, encouraging consistent excellence in service delivery.',
+                details: {
+                    Nature: 'Monetary',
+                    Reward: 'Cash bonus (amount TBD)',
+                    Frequency: 'Monthly'
+                },
+                criteria: [
+                    '<strong>Primary Metric:</strong> Highest Customer Satisfaction (CSAT) score for the month.',
+                    '<strong>Secondary (Tie-breaker):</strong> Consistent quality standards, minimal escalations, positive peer feedback.'
+                ],
+                process: [
+                    { name: 'Data Compilation', detail: 'CSAT scores are automatically compiled at month-end.' },
+                    { name: 'Identification', detail: 'The team member with the highest CSAT score is identified.' },
+                    { name: 'Approval', detail: 'List is reviewed and approved by the Department Head.' }
+                ],
+                chart: {
+                    type: 'bar',
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                    data: [95.2, 96.1, 94.8, 97.3, 96.5, 98.1],
+                    title: 'Monthly Top CSAT Score Trend (Example)',
+                    datasetLabel: 'Top CSAT Score (%)'
+                }
+            },
+            quarterly: {
+                title: 'Quarterly Awards (GOAT)',
+                icon: '🐐',
+                purpose: 'To celebrate exceptional, sustained performance over a quarter, recognizing individuals who consistently lead in both customer satisfaction and overall support matrix performance.',
+                details: {
+                    Nature: 'Significant Monetary',
+                    Reward: 'Large cash bonus (amount TBD)',
+                    Frequency: 'Quarterly'
+                },
+                criteria: [
+                    '<strong>Primary Metric:</strong> Highest cumulative CSAT score across the entire quarter.',
+                    '<strong>Additional Metrics:</strong> Consistent high performance in FCR, AHT efficiency, QA scores, and SLA adherence.'
+                ],
+                process: [
+                    { name: 'Data Aggregation', detail: 'CSAT and other support metrics are aggregated for the quarter.' },
+                    { name: 'Comprehensive Review', detail: 'A full review identifies the top performer based on all criteria.' },
+                    { name: 'Final Approval', detail: 'Recipient is selected and approved by a senior leadership panel.' }
+                ],
+                chart: {
+                    type: 'bar',
+                    labels: ['CSAT', 'FCR', 'QA Score', 'SLA Adherence'],
+                    data: [98, 92, 96, 99],
+                    title: 'Top Performer Metrics - Q2 (Example)',
+                    datasetLabel: 'Performance (%)'
+                }
+            }
+        };
+
+        const contentContainer = document.getElementById('content-container');
+        const tabs = document.querySelectorAll('.tab-btn');
+        let currentChart = null;
+
+        function renderContent(awardKey) {
+            const data = awardsData[awardKey];
+            let chartHtml = '';
+            if (data.chart) {
+                chartHtml = `
+                    <div class="mt-8">
+                        <h4 class="text-lg font-semibold text-slate-700 text-center mb-4">${data.chart.title}</h4>
+                        <div class="chart-container">
+                            <canvas id="awardChart"></canvas>
+                        </div>
+                    </div>
+                `;
+            }
+
+            const processHtml = data.process.map((step, index) => `
+                <div class="relative flex-1">
+                    <div class="text-center">
+                        <div class="mx-auto h-12 w-12 rounded-full bg-teal-100 border-2 border-teal-200 flex items-center justify-center">
+                            <span class="text-xl font-bold text-teal-700">${index + 1}</span>
+                        </div>
+                        <h5 class="mt-2 text-sm font-semibold text-slate-700">${step.name}</h5>
+                        <p class="mt-1 text-xs text-slate-500">${step.detail}</p>
+                    </div>
+                </div>
+                ${index < data.process.length - 1 ? `
+                <div class="flex-shrink-0 w-16 h-1 bg-teal-200 rounded-full self-start mt-5 hidden md:block"></div>
+                <div class="flex-shrink-0 h-8 w-1 bg-teal-200 rounded-full self-center mx-auto mt-2 mb-2 md:hidden"></div>
+                ` : ''}
+            `).join('');
+
+            contentContainer.innerHTML = `
+                <div class="fade-in">
+                    <div class="text-center md:text-left mb-6">
+                        <h3 class="text-2xl md:text-3xl font-bold text-teal-700">${data.icon} ${data.title}</h3>
+                        <p class="mt-2 text-slate-600 max-w-4xl mx-auto md:mx-0">${data.purpose}</p>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <h4 class="text-lg font-semibold text-slate-700 mb-4 border-b pb-2">Key Details</h4>
+                            <div class="space-y-3">
+                                ${Object.entries(data.details).map(([key, value]) => `
+                                    <div class="flex">
+                                        <span class="font-semibold w-24 flex-shrink-0">${key}:</span>
+                                        <span class="text-slate-600">${value}</span>
+                                    </div>
+                                `).join('')}
+                            </div>
+                            
+                            <h4 class="text-lg font-semibold text-slate-700 mb-4 mt-6 border-b pb-2">Criteria</h4>
+                            <ul class="space-y-2 list-disc list-outside ml-5 text-slate-600">
+                                ${data.criteria.map(item => `<li>${item}</li>`).join('')}
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-semibold text-slate-700 mb-4 border-b pb-2">Process</h4>
+                            <div class="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0 md:space-x-4">
+                                ${processHtml}
+                            </div>
+                            ${chartHtml}
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            if (data.chart) {
+                renderChart(data.chart);
+            }
+        }
+
+        function renderChart(chartData) {
+            const ctx = document.getElementById('awardChart').getContext('2d');
+            if (currentChart) {
+                currentChart.destroy();
+            }
+            const tealColor = '#0d9488';
+            const tealLightColor = 'rgba(13, 148, 136, 0.2)';
+
+            currentChart = new Chart(ctx, {
+                type: chartData.type,
+                data: {
+                    labels: chartData.labels,
+                    datasets: [{
+                        label: chartData.datasetLabel,
+                        data: chartData.data,
+                        backgroundColor: tealLightColor,
+                        borderColor: tealColor,
+                        borderWidth: 2,
+                        pointBackgroundColor: tealColor,
+                        pointRadius: 4,
+                        tension: 0.3
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: chartData.type === 'bar',
+                            grid: {
+                                color: '#e2e8f0' // slate-200
+                            },
+                            ticks: {
+                                color: '#475569' // slate-600
+                            }
+                        },
+                        x: {
+                            grid: {
+                                display: false
+                            },
+                            ticks: {
+                                color: '#475569' // slate-600
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            backgroundColor: '#0f172a', // slate-900
+                            titleFont: {
+                                size: 14,
+                                weight: 'bold'
+                            },
+                            bodyFont: {
+                                size: 12
+                            },
+                            padding: 10,
+                            cornerRadius: 4,
+                            displayColors: false
+                        }
+                    }
+                }
+            });
+        }
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const awardKey = tab.id.split('-')[1];
+                
+                tabs.forEach(t => {
+                    t.classList.remove('tab-active');
+                    t.classList.add('tab-inactive');
+                });
+                
+                tab.classList.add('tab-active');
+                tab.classList.remove('tab-inactive');
+
+                renderContent(awardKey);
+            });
+        });
+
+        document.getElementById('tab-spot').click();
+
+    </script>
+</body>
+</html>
