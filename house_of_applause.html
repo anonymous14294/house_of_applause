@@ -3,21 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Samsara - House of Applause</title>
+    <title>Team Reward & Recognition Program</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Chosen Palette: Warm Neutrals with Teal Accent -->
-    <!-- Application Structure Plan: The application uses a tab-based navigation model to present the different award categories. This was chosen over a linear document scroll to allow users to quickly access the specific information they are interested in (e.g., details of the 'GOAT' award) without needing to parse unrelated content. The main view provides a high-level overview and directs users to the three core award types. Each award type has its own detailed view, which includes a visual process flow diagram and, where applicable, an interactive chart. This structure prioritizes user-driven exploration and makes the dense information of the report digestible and easy to compare. -->
-    <!-- Visualization & Content Choices: 
-        - Report Info: Award Categories -> Goal: Organize/Compare -> Viz/Method: Tabbed navigation with cards -> Interaction: Click to switch content -> Justification: Allows non-linear exploration of awards.
-        - Report Info: Approval Process -> Goal: Explain Flow -> Viz/Method: HTML/CSS process diagram -> Interaction: Static visual guide -> Justification: More intuitive than text, avoids forbidden SVG/Mermaid.
-        - Report Info: Performance Metrics -> Goal: Compare -> Viz/Method: Bar Chart -> Interaction: Hover for tooltips -> Justification: Standard, clear way to compare quantitative data. Library: Chart.js.
-        - Report Info: Program Benefits -> Goal: Inform -> Viz/Method: Grid of cards -> Interaction: Static display -> Justification: Clear and scannable presentation of key takeaways.
+    <!-- Selected Color Palette: Energetic & Playful -->
+    <!-- Narrative Plan: 1. Intro/Hook, 2. The 5 Awards (Cards), 3. Balanced Metrics (Donut), 4. Ticket Metric (Donut), 5. Minimums (Big Numbers), 6. Anytime Workflows (HTML Flowchart), 7. Monthly/Quarterly Workflow (HTML Grid Timeline) -->
+    <!-- Visualization Choices:
+    1. Award Overview -> Goal: Compare -> Vis: HTML/CSS Cards -> Justification: Clear, responsive, and stylish way to list categories. (NO SVG)
+    2. Hero/Maestro Weighting -> Goal: Show Composition -> Vis: Donut Chart -> Justification: Standard for 100% breakdown. (Chart.js Canvas, NO SVG)
+    3. Tickets Handling Weighting -> Goal: Show Composition -> Vis: Donut Chart -> Justification: Standard for 100% breakdown. (Chart.js Canvas, NO SVG)
+    4. Minimum Requirements -> Goal: Inform -> Vis: "Big Number" HTML/CSS Callouts -> Justification: Highlights key qualification gates. (NO SVG)
+    5. Anytime Award Workflows -> Goal: Organize/Process -> Vis: Flow Chart (HTML/CSS) -> Justification: Adheres to NO SVG/Mermaid. Uses vertical flexbox. (NO SVG)
+    6. Monthly/Quarterly Workflow -> Goal: Organize/Timeline -> Vis: Timeline (HTML/CSS Grid) -> Justification: Adheres to NO SVG/Mermaid. Uses responsive grid for steps. (NO SVG)
     -->
-    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <!-- Confirmation: NEITHER Mermaid JS NOR SVG were used. Diagrams are pure HTML/CSS. Charts are pure Chart.js Canvas. -->
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -25,354 +24,296 @@
         .chart-container {
             position: relative;
             width: 100%;
-            max-width: 600px;
+            max-width: 400px;
             margin-left: auto;
             margin-right: auto;
             height: 300px;
-            max-height: 400px;
+            max-height: 300px;
         }
         @media (min-width: 768px) {
             .chart-container {
                 height: 350px;
+                max-height: 350px;
             }
         }
-        .tab-active {
-            border-color: #0d9488; /* teal-600 */
-            background-color: #ccfbf1; /* teal-100 */
-            color: #134e4a; /* teal-900 */
-            font-weight: 600;
+        .flow-step {
+            background-color: white;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            border: 1px solid #06D6A0;
         }
-        .tab-inactive {
-            border-color: transparent;
-            background-color: #f1f5f9; /* slate-100 */
-            color: #475569; /* slate-600 */
-        }
-        .fade-in {
-            animation: fadeIn 0.5s ease-in-out;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        .flow-arrow {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #118AB2;
+            margin: 0.5rem 0;
         }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
-<body class="bg-stone-50 text-slate-800">
+<body class="bg-gray-100" style="color: #073B4C;">
 
-    <div class="container mx-auto p-4 sm:p-6 lg:p-8">
-        
-        <header class="text-center mb-8 md:mb-12">
-            <h1 class="text-3xl md:text-4xl font-bold text-teal-800 mb-2">House of Applause - Team Recognition & Reward Program</h1>
-            <p class="text-lg text-slate-600 max-w-3xl mx-auto">An interactive guide to our proposed framework for celebrating outstanding performance and fostering a culture of appreciation.</p>
+    <div class="container mx-auto p-4 md:p-8">
+
+        <header class="text-center my-8 md:my-12">
+            <h1 class="text-4xl md:text-6xl font-black" style="color: #073B4C;">House of Applause</h1>
+            <h2 class="text-4xl md:text-6xl font-black" style="color: #073B4C;">Recognizing Excellence</h2>
+            <p class="text-xl md:text-2xl mt-4" style="color: #118AB2;">Introducing Our New Team Reward & Recognition Program</p>
+            <p class="max-w-3xl mx-auto mt-4 text-base">
+                Our goal is to recognize and reward employees who consistently demonstrate excellence in customer satisfaction, efficiency, quality, knowledge sharing, and exceptional effort. This program ensures fair competition and celebrates your hard work.
+            </p>
         </header>
 
-        <main>
-            <div class="bg-white rounded-xl shadow-lg p-6 md:p-8">
+        <section class="my-12">
+            <h2 class="text-3xl font-bold text-center mb-8">The Awards</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <div class="bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center">
+                    <span class="text-6xl mb-4">🏆</span>
+                    <h3 class="text-2xl font-bold mb-2">CSAT Champ Support</h3>
+                    <p class="font-semibold" style="color: #118AB2;">Monthly (L1 & L2)</p>
+                    <p class="mt-2">For the agent with the absolute highest Customer Satisfaction (CSAT) score. Your dedication to customer happiness pays off!</p>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center">
+                    <span class="text-6xl mb-4">🦸</span>
+                    <h3 class="text-2xl font-bold mb-2">Support Hero</h3>
+                    <p class="font-semibold" style="color: #118AB2;">Monthly (L1 & L2)</p>
+                    <p class="mt-2">For the best all-around performer, calculated on a composite score of CSAT, Ticket Handling, and Quality Score.</p>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center md:col-span-2 lg:col-span-1">
+                    <span class="text-6xl mb-4">🎼</span>
+                    <h3 class="text-2xl font-bold mb-2">Support Maestro</h3>
+                    <p class="font-semibold" style="color: #118AB2;">Quarterly (L1 & L2)</p>
+                    <p class="mt-2">For sustained high performance. This award uses the same composite score as the Support Hero, averaged over the entire quarter.</p>
+                </div>
                 
-                <div class="mb-8">
-                    <h2 class="text-2xl font-bold text-slate-700 mb-3">Award Categories</h2>
-                    <p class="text-slate-600 mb-6">
-                        This program is built on three pillars of recognition, each designed to acknowledge different types of contributions, from immediate 'in-the-moment' excellence to sustained high performance over time. Select an award category below to explore its purpose, criteria, and process in detail.
-                    </p>
-                    <div class="border-b border-slate-200">
-                        <nav class="-mb-px flex space-x-2 sm:space-x-4" aria-label="Tabs">
-                            <button id="tab-spot" class="tab-btn whitespace-nowrap py-3 px-4 border-b-2 font-medium text-sm rounded-t-lg transition-colors duration-200">
-                                ✨ Spot Awards
-                            </button>
-                            <button id="tab-monthly" class="tab-btn whitespace-nowrap py-3 px-4 border-b-2 font-medium text-sm rounded-t-lg transition-colors duration-200">
-                                🏆 Monthly Awards
-                            </button>
-                            <button id="tab-quarterly" class="tab-btn whitespace-nowrap py-3 px-4 border-b-2 font-medium text-sm rounded-t-lg transition-colors duration-200">
-                                🐐 Quarterly Awards
-                            </button>
-                        </nav>
+                <div class="bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center">
+                    <span class="text-6xl mb-4">🧙</span>
+                    <h3 class="text-2xl font-bold mb-2">Knowledge Wizard</h3>
+                    <p class="font-semibold" style="color: #118AB2;">Anytime (All)</p>
+                    <p class="mt-2">Awarded for creating or significantly updating a high-quality Knowledge Base (KB) article. Share your wisdom!</p>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center">
+                    <span class="text-6xl mb-4">✨</span>
+                    <h3 class="text-2xl font-bold mb-2">SPOT Award</h3>
+                    <p class="font-semibold" style="color: #118AB2;">Anytime (All)</p>
+                    <p class="mt-2">For outstanding, above-and-beyond efforts. This can be nominated by anyone on the team and is approved by a manager.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="my-12 bg-white rounded-lg shadow-md p-6 md:p-8">
+            <h2 class="text-3xl font-bold text-center mb-4">How to Win: The Balanced Scorecard</h2>
+            <p class="text-center max-w-3xl mx-auto mb-8">
+                The 'Support Hero' (Monthly) and 'Support Maestro' (Quarterly) awards are based on a balanced composite score. This ensures we recognize well-rounded performance, not just one metric. Here’s the breakdown:
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <h3 class="text-2xl font-bold text-center mb-4">Hero & Maestro Score</h3>
+                    <div class="chart-container">
+                        <canvas id="metricsDonut"></canvas>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold text-center mb-4">"Tickets Handling" Metric</h3>
+                    <p class="text-center mb-4">Your "Tickets Handling" score is itself a composite metric, blending volume with efficiency.</p>
+                    <div class="chart-container">
+                        <canvas id="ticketsDonut"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="my-12">
+            <h2 class="text-3xl font-bold text-center mb-8">Qualification Is Key: Minimum Requirements</h2>
+            <p class="text-center max-w-3xl mx-auto mb-8">
+                To be eligible for the monthly or quarterly quantitative awards, you must meet these minimum performance gateways for the period. This ensures data accuracy and fair comparison.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                <div class="bg-white rounded-lg shadow-md p-8">
+                    <p class="text-6xl font-black" style="color: #118AB2;">25+</p>
+                    <p class="text-xl font-bold mt-2">Scored CSAT Responses</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-8">
+                    <p class="text-6xl font-black" style="color: #06D6A0;">100%</p>
+                    <p class="text-xl font-bold mt-2">Of Daily Ticket Volume Target</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-8">
+                    <p class="text-6xl font-black" style="color: #FFD166;">3+</p>
+                    <p class="text-xl font-bold mt-2">Internal Quality Audits</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="my-12">
+            <h2 class="text-3xl font-bold text-center mb-8">How to Win: Anytime Awards Workflow</h2>
+            <p class="text-center max-w-3xl mx-auto mb-8">
+                The 'Knowledge Wizard' and 'SPOT' awards can be earned at any time. Here’s how the process works for each.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <div>
+                    <h3 class="text-2xl font-bold text-center mb-6">Knowledge Wizard 🧙</h3>
+                    <div class="flex flex-col items-center space-y-2">
+                        <div class="flow-step w-full max-w-sm">
+                            <span class="font-bold">1. Submit Article</span>
+                            <p class="text-sm">You draft and submit a new KB article or significant update.</p>
+                        </div>
+                        <div class="flow-arrow">↓</div>
+                        <div class="flow-step w-full max-w-sm">
+                            <span class="font-bold">2. Review & Audit</span>
+                            <p class="text-sm">The Knowledge Manager or SME reviews it for accuracy, clarity, and value.</p>
+                        </div>
+                        <div class="flow-arrow">↓</div>
+                        <div class="flow-step w-full max-w-sm" style="border-color: #06D6A0; background-color: #f0fdf4;">
+                            <span class="font-bold">3. Publish & Reward!</span>
+                            <p class="text-sm">Once approved and published, you receive the award immediately.</p>
+                        </div>
                     </div>
                 </div>
 
-                <div id="content-container">
-                </div>
-
-            </div>
-
-            <div class="mt-8 md:mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="bg-white rounded-xl shadow-lg p-6 md:p-8">
-                    <h2 class="text-2xl font-bold text-slate-700 mb-4">Program Benefits</h2>
-                    <p class="text-slate-600 mb-6">Implementing this structured program is an investment in our team, expected to yield significant returns in morale, performance, and retention.</p>
-                    <div class="space-y-4">
-                        <div class="flex items-start">
-                            <div class="flex-shrink-0 h-6 w-6 rounded-full bg-teal-100 text-teal-700 flex items-center justify-center">✓</div>
-                            <p class="ml-3 text-slate-700"><strong class="font-semibold">Increased Motivation & Engagement:</strong> Fostering a sense of value and recognition for hard work.</p>
+                <div>
+                    <h3 class="text-2xl font-bold text-center mb-6">SPOT Award ✨</h3>
+                    <div class="flex flex-col items-center space-y-2">
+                        <div class="flow-step w-full max-w-sm">
+                            <span class="font-bold">1. Nominate (G-Form)</span>
+                            <p class="text-sm">Anyone (peer or manager) nominates you via G-Form for outstanding effort.</p>
                         </div>
-                        <div class="flex items-start">
-                             <div class="flex-shrink-0 h-6 w-6 rounded-full bg-teal-100 text-teal-700 flex items-center justify-center">✓</div>
-                            <p class="ml-3 text-slate-700"><strong class="font-semibold">Enhanced Performance:</strong> Aligning individual efforts with key metrics like CSAT.</p>
+                        <div class="flow-arrow">↓</div>
+                        <div class="flow-step w-full max-w-sm">
+                            <span class="font-bold">2. Manager Review</span>
+                            <p class="text-sm">Your manager reviews the nomination for "above and beyond" impact.</p>
                         </div>
-                        <div class="flex items-start">
-                             <div class="flex-shrink-0 h-6 w-6 rounded-full bg-teal-100 text-teal-700 flex items-center justify-center">✓</div>
-                            <p class="ml-3 text-slate-700"><strong class="font-semibold">Improved Retention:</strong> Creating a positive work culture that reduces attrition.</p>
-                        </div>
-                         <div class="flex items-start">
-                             <div class="flex-shrink-0 h-6 w-6 rounded-full bg-teal-100 text-teal-700 flex items-center justify-center">✓</div>
-                            <p class="ml-3 text-slate-700"><strong class="font-semibold">Reinforcement of Values:</strong> Highlighting and rewarding behaviors that reflect our core principles.</p>
+                        <div class="flow-arrow">↓</div>
+                        <div class="flow-step w-full max-w-sm" style="border-color: #06D6A0; background-color: #f0fdf4;">
+                            <span class="font-bold">3. Approve & Reward!</span>
+                            <p class="text-sm">Approved within 2 business days, and you receive the award.</p>
                         </div>
                     </div>
                 </div>
-                <div class="bg-white rounded-xl shadow-lg p-6 md:p-8">
-                    <h2 class="text-2xl font-bold text-slate-700 mb-4">Implementation Next Steps</h2>
-                    <p class="text-slate-600 mb-6">Upon approval, we will proceed with the following actions to bring this program to life.</p>
-                    <ol class="list-decimal list-inside space-y-3 text-slate-700">
-                        <li>Finalize monetary reward amounts.</li>
-                        <li>Develop detailed nomination and approval guidelines.</li>
-                        <li>Establish a clear internal communication plan.</li>
-                        <li>Set up performance tracking and reporting mechanisms.</li>
-                        <li>Define the format for award announcements.</li>
-                    </ol>
+            </div>
+        </section>
+        
+        <section class="my-12 bg-white rounded-lg shadow-md p-6 md:p-8">
+            <h2 class="text-3xl font-bold text-center mb-4">The Monthly & Quarterly Process</h2>
+            <p class="text-center max-w-3xl mx-auto mb-8">
+                To ensure fairness and transparency, our automated awards follow a clear 5-day process at the start of each new period.
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                <div class="text-center p-4 rounded-lg" style="background-color: #f0f7ff;">
+                    <p class="text-sm font-bold" style="color: #118AB2;">Day 1</p>
+                    <p class="text-lg font-semibold mt-1">Data Extraction</p>
+                    <p class="text-sm mt-1">Operations pulls all raw KPI data for the previous period.</p>
+                </div>
+                <div class="text-center p-4 rounded-lg" style="background-color: #f0f7ff;">
+                    <p class="text-sm font-bold" style="color: #118AB2;">Day 2</p>
+                    <p class="text-lg font-semibold mt-1">Calculation</p>
+                    <p class="text-sm mt-1">Composite scores are calculated and leaderboards are generated.</p>
+                </div>
+                <div class="text-center p-4 rounded-lg" style="background-color: #f0f7ff;">
+                    <p class="text-sm font-bold" style="color: #118AB2;">Day 3</p>
+                    <p class="text-lg font-semibold mt-1">Verification</p>
+                    <p class="text-sm mt-1">Managers vet the top candidates for qualification and quality.</p>
+                </div>
+                <div class="text-center p-4 rounded-lg" style="background-color: #f0f7ff;">
+                    <p class="text-sm font-bold" style="color: #118AB2;">Day 4</p>
+                    <p class="text-lg font-semibold mt-1">Final Approval</p>
+                    <p class="text-sm mt-1">The Support Manager signs off on the final list of winners.</p>
+                </div>
+                <div class="text-center p-4 rounded-lg" style="background-color: #d6fdee; border: 2px solid #06D6A0;">
+                    <p class="text-sm font-bold" style="color: #047857;">Day 5</p>
+                    <p class="text-lg font-semibold mt-1">Announcement!</p>
+                    <p class="text-sm mt-1">Winners are announced, and rewards are processed.</p>
                 </div>
             </div>
-        </main>
-
-        <footer class="text-center mt-12 text-slate-500 text-sm">
-            <p>Proposal for Team Member Recognition & Reward Program</p>
+        </section>
+        
+        <footer class="text-center my-12">
+            <p class="text-2xl font-bold" style="color: #073B4C;">Strive for Excellence!</p>
+            <p class="text-base mt-2">If you have any questions, please reach out to your manager.</p>
         </footer>
 
     </div>
 
     <script>
-        const awardsData = {
-            spot: {
-                title: 'Spot Awards',
-                icon: '✨',
-                purpose: 'To provide immediate recognition for exceptional efforts, specific achievements, or outstanding contributions that occur on an ad-hoc basis and deserve prompt acknowledgment.',
-                details: {
-                    Nature: 'Non-monetary',
-                    Reward: 'Certificate, team lunch, company merchandise',
-                    Frequency: 'Ad-hoc'
-                },
-                criteria: [
-                    'Demonstration of exceptional effort on a task or project.',
-                    'Going above and beyond regular duties to assist a colleague or customer.',
-                    'Innovative problem-solving or a significant contribution.',
-                    'Exemplifying core company values in a demonstrable way.',
-                    'Successful completion of a challenging short-term assignment.'
-                ],
-                process: [
-                    { name: 'Nomination', detail: 'Any team member can nominate a colleague with a clear justification.' },
-                    { name: 'Review', detail: 'Nominee\'s direct manager reviews the submission against criteria.' },
-                    { name: 'Approval', detail: 'Manager approves the award.' }
-                ]
-            },
-            monthly: {
-                title: 'Monthly Awards (Tesla, MVP)',
-                icon: '🏆',
-                purpose: 'To recognize sustained high performance and outstanding customer satisfaction within a given month, encouraging consistent excellence in service delivery.',
-                details: {
-                    Nature: 'Monetary',
-                    Reward: 'Cash bonus (amount TBD)',
-                    Frequency: 'Monthly'
-                },
-                criteria: [
-                    '<strong>Primary Metric:</strong> Highest Customer Satisfaction (CSAT) score for the month.',
-                    '<strong>Secondary (Tie-breaker):</strong> Consistent quality standards, minimal escalations, positive peer feedback.'
-                ],
-                process: [
-                    { name: 'Data Compilation', detail: 'CSAT scores are automatically compiled at month-end.' },
-                    { name: 'Identification', detail: 'The team member with the highest CSAT score is identified.' },
-                    { name: 'Approval', detail: 'List is reviewed and approved by the Department Head.' }
-                ],
-                chart: {
-                    type: 'bar',
-                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
-                    data: [95.2, 96.1, 94.8, 97.3, 96.5, 98.1],
-                    title: 'Monthly Top CSAT Score Trend (Example)',
-                    datasetLabel: 'Top CSAT Score (%)'
+        document.addEventListener('DOMContentLoaded', () => {
+            const chartColors = {
+                blue: '#118AB2',
+                green: '#06D6A0',
+                yellow: '#FFD166',
+                red: '#FF6B6B',
+                darkBlue: '#073B4C'
+            };
+
+            const tooltipTitleCallback = (tooltipItems) => {
+                const item = tooltipItems[0];
+                let label = item.chart.data.labels[item.dataIndex];
+                if (Array.isArray(label)) {
+                    return label.join(' ');
+                } else {
+                    return label;
                 }
-            },
-            quarterly: {
-                title: 'Quarterly Awards (GOAT)',
-                icon: '🐐',
-                purpose: 'To celebrate exceptional, sustained performance over a quarter, recognizing individuals who consistently lead in both customer satisfaction and overall support matrix performance.',
-                details: {
-                    Nature: 'Significant Monetary',
-                    Reward: 'Large cash bonus (amount TBD)',
-                    Frequency: 'Quarterly'
-                },
-                criteria: [
-                    '<strong>Primary Metric:</strong> Highest cumulative CSAT score across the entire quarter.',
-                    '<strong>Additional Metrics:</strong> Consistent high performance in FCR, AHT efficiency, QA scores, and SLA adherence.'
-                ],
-                process: [
-                    { name: 'Data Aggregation', detail: 'CSAT and other support metrics are aggregated for the quarter.' },
-                    { name: 'Comprehensive Review', detail: 'A full review identifies the top performer based on all criteria.' },
-                    { name: 'Final Approval', detail: 'Recipient is selected and approved by a senior leadership panel.' }
-                ],
-                chart: {
-                    type: 'bar',
-                    labels: ['CSAT', 'FCR', 'QA Score', 'SLA Adherence'],
-                    data: [98, 92, 96, 99],
-                    title: 'Top Performer Metrics - Q2 (Example)',
-                    datasetLabel: 'Performance (%)'
-                }
-            }
-        };
+            };
 
-        const contentContainer = document.getElementById('content-container');
-        const tabs = document.querySelectorAll('.tab-btn');
-        let currentChart = null;
-
-        function renderContent(awardKey) {
-            const data = awardsData[awardKey];
-            let chartHtml = '';
-            if (data.chart) {
-                chartHtml = `
-                    <div class="mt-8">
-                        <h4 class="text-lg font-semibold text-slate-700 text-center mb-4">${data.chart.title}</h4>
-                        <div class="chart-container">
-                            <canvas id="awardChart"></canvas>
-                        </div>
-                    </div>
-                `;
-            }
-
-            const processHtml = data.process.map((step, index) => `
-                <div class="relative flex-1">
-                    <div class="text-center">
-                        <div class="mx-auto h-12 w-12 rounded-full bg-teal-100 border-2 border-teal-200 flex items-center justify-center">
-                            <span class="text-xl font-bold text-teal-700">${index + 1}</span>
-                        </div>
-                        <h5 class="mt-2 text-sm font-semibold text-slate-700">${step.name}</h5>
-                        <p class="mt-1 text-xs text-slate-500">${step.detail}</p>
-                    </div>
-                </div>
-                ${index < data.process.length - 1 ? `
-                <div class="flex-shrink-0 w-16 h-1 bg-teal-200 rounded-full self-start mt-5 hidden md:block"></div>
-                <div class="flex-shrink-0 h-8 w-1 bg-teal-200 rounded-full self-center mx-auto mt-2 mb-2 md:hidden"></div>
-                ` : ''}
-            `).join('');
-
-            contentContainer.innerHTML = `
-                <div class="fade-in">
-                    <div class="text-center md:text-left mb-6">
-                        <h3 class="text-2xl md:text-3xl font-bold text-teal-700">${data.icon} ${data.title}</h3>
-                        <p class="mt-2 text-slate-600 max-w-4xl mx-auto md:mx-0">${data.purpose}</p>
-                    </div>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <div>
-                            <h4 class="text-lg font-semibold text-slate-700 mb-4 border-b pb-2">Key Details</h4>
-                            <div class="space-y-3">
-                                ${Object.entries(data.details).map(([key, value]) => `
-                                    <div class="flex">
-                                        <span class="font-semibold w-24 flex-shrink-0">${key}:</span>
-                                        <span class="text-slate-600">${value}</span>
-                                    </div>
-                                `).join('')}
-                            </div>
-                            
-                            <h4 class="text-lg font-semibold text-slate-700 mb-4 mt-6 border-b pb-2">Criteria</h4>
-                            <ul class="space-y-2 list-disc list-outside ml-5 text-slate-600">
-                                ${data.criteria.map(item => `<li>${item}</li>`).join('')}
-                            </ul>
-                        </div>
-                        <div>
-                            <h4 class="text-lg font-semibold text-slate-700 mb-4 border-b pb-2">Process</h4>
-                            <div class="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0 md:space-x-4">
-                                ${processHtml}
-                            </div>
-                            ${chartHtml}
-                        </div>
-                    </div>
-                </div>
-            `;
-
-            if (data.chart) {
-                renderChart(data.chart);
-            }
-        }
-
-        function renderChart(chartData) {
-            const ctx = document.getElementById('awardChart').getContext('2d');
-            if (currentChart) {
-                currentChart.destroy();
-            }
-            const tealColor = '#0d9488';
-            const tealLightColor = 'rgba(13, 148, 136, 0.2)';
-
-            currentChart = new Chart(ctx, {
-                type: chartData.type,
-                data: {
-                    labels: chartData.labels,
-                    datasets: [{
-                        label: chartData.datasetLabel,
-                        data: chartData.data,
-                        backgroundColor: tealLightColor,
-                        borderColor: tealColor,
-                        borderWidth: 2,
-                        pointBackgroundColor: tealColor,
-                        pointRadius: 4,
-                        tension: 0.3
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        y: {
-                            beginAtZero: chartData.type === 'bar',
-                            grid: {
-                                color: '#e2e8f0' // slate-200
-                            },
-                            ticks: {
-                                color: '#475569' // slate-600
-                            }
-                        },
-                        x: {
-                            grid: {
-                                display: false
-                            },
-                            ticks: {
-                                color: '#475569' // slate-600
-                            }
-                        }
+            const commonOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
                     },
-                    plugins: {
-                        legend: {
-                            display: false
-                        },
-                        tooltip: {
-                            backgroundColor: '#0f172a', // slate-900
-                            titleFont: {
-                                size: 14,
-                                weight: 'bold'
-                            },
-                            bodyFont: {
-                                size: 12
-                            },
-                            padding: 10,
-                            cornerRadius: 4,
-                            displayColors: false
+                    tooltip: {
+                        callbacks: {
+                            title: tooltipTitleCallback
                         }
                     }
                 }
+            };
+
+            const ctxMetrics = document.getElementById('metricsDonut').getContext('2d');
+            new Chart(ctxMetrics, {
+                type: 'doughnut',
+                data: {
+                    labels: ['CSAT (50%)', 'Tickets Handling (30%)', 'Quality Score (20%)'],
+                    datasets: [{
+                        label: 'Metric Weighting',
+                        data: [50, 30, 20],
+                        backgroundColor: [
+                            chartColors.blue,
+                            chartColors.green,
+                            chartColors.yellow
+                        ],
+                        hoverOffset: 4
+                    }]
+                },
+                options: commonOptions
             });
-        }
 
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                const awardKey = tab.id.split('-')[1];
-                
-                tabs.forEach(t => {
-                    t.classList.remove('tab-active');
-                    t.classList.add('tab-inactive');
-                });
-                
-                tab.classList.add('tab-active');
-                tab.classList.remove('tab-inactive');
-
-                renderContent(awardKey);
+            const ctxTickets = document.getElementById('ticketsDonut').getContext('2d');
+            new Chart(ctxTickets, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Solved Tickets Volume (60%)', 'FCR Rate (40%)'],
+                    datasets: [{
+                        label: 'Tickets Handling Breakdown',
+                        data: [60, 40],
+                        backgroundColor: [
+                            chartColors.blue,
+                            chartColors.green
+                        ],
+                        hoverOffset: 4
+                    }]
+                },
+                options: commonOptions
             });
         });
-
-        document.getElementById('tab-spot').click();
-
     </script>
+
 </body>
 </html>
