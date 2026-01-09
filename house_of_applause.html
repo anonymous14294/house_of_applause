@@ -3,317 +3,339 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Team Reward & Recognition Program</title>
+    <title>Strategic Reward & Recognition Framework</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- Selected Color Palette: Energetic & Playful -->
-    <!-- Narrative Plan: 1. Intro/Hook, 2. The 5 Awards (Cards), 3. Balanced Metrics (Donut), 4. Ticket Metric (Donut), 5. Minimums (Big Numbers), 6. Anytime Workflows (HTML Flowchart), 7. Monthly/Quarterly Workflow (HTML Grid Timeline) -->
-    <!-- Visualization Choices:
-    1. Award Overview -> Goal: Compare -> Vis: HTML/CSS Cards -> Justification: Clear, responsive, and stylish way to list categories. (NO SVG)
-    2. Hero/Maestro Weighting -> Goal: Show Composition -> Vis: Donut Chart -> Justification: Standard for 100% breakdown. (Chart.js Canvas, NO SVG)
-    3. Tickets Handling Weighting -> Goal: Show Composition -> Vis: Donut Chart -> Justification: Standard for 100% breakdown. (Chart.js Canvas, NO SVG)
-    4. Minimum Requirements -> Goal: Inform -> Vis: "Big Number" HTML/CSS Callouts -> Justification: Highlights key qualification gates. (NO SVG)
-    5. Anytime Award Workflows -> Goal: Organize/Process -> Vis: Flow Chart (HTML/CSS) -> Justification: Adheres to NO SVG/Mermaid. Uses vertical flexbox. (NO SVG)
-    6. Monthly/Quarterly Workflow -> Goal: Organize/Timeline -> Vis: Timeline (HTML/CSS Grid) -> Justification: Adheres to NO SVG/Mermaid. Uses responsive grid for steps. (NO SVG)
-    -->
-    <!-- Confirmation: NEITHER Mermaid JS NOR SVG were used. Diagrams are pure HTML/CSS. Charts are pure Chart.js Canvas. -->
     <style>
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f8fafc; 
+            color: #1e293b;
         }
         .chart-container {
             position: relative;
             width: 100%;
-            max-width: 400px;
+            max-width: 500px;
             margin-left: auto;
             margin-right: auto;
-            height: 300px;
-            max-height: 300px;
+            height: 350px;
+            max-height: 400px;
         }
-        @media (min-width: 768px) {
-            .chart-container {
-                height: 350px;
-                max-height: 350px;
-            }
+        .card-shadow {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
-        .flow-step {
-            background-color: white;
-            border-radius: 0.5rem;
-            padding: 1rem;
-            text-align: center;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            border: 1px solid #06D6A0;
-        }
-        .flow-arrow {
-            font-size: 2rem;
+        .process-arrow {
+            font-size: 1.5rem;
+            color: #94a3b8; 
             font-weight: bold;
-            color: #118AB2;
-            margin: 0.5rem 0;
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
-<body class="bg-gray-100" style="color: #073B4C;">
+<body>
 
-    <div class="container mx-auto p-4 md:p-8">
-
-        <header class="text-center my-8 md:my-12">
-            <h1 class="text-4xl md:text-6xl font-black" style="color: #073B4C;">House of Applause</h1>
-            <h2 class="text-4xl md:text-6xl font-black" style="color: #073B4C;">Recognizing Excellence</h2>
-            <p class="text-xl md:text-2xl mt-4" style="color: #118AB2;">Introducing Our New Team Reward & Recognition Program</p>
-            <p class="max-w-3xl mx-auto mt-4 text-base">
-                Our goal is to recognize and reward employees who consistently demonstrate excellence in customer satisfaction, efficiency, quality, knowledge sharing, and exceptional effort. This program ensures fair competition and celebrates your hard work.
-            </p>
+    <div class="min-h-screen">
+        
+        <header class="bg-slate-900 text-white py-12 px-4 shadow-lg border-b-8 border-teal-500">
+            <div class="max-w-7xl mx-auto text-center">
+                <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-4">Performance-Driven Recognition</h1>
+                <p class="text-xl md:text-2xl text-teal-400 font-light uppercase tracking-wider">Strategic Execution Plan for L1 & L2 Support Teams</p>
+                <p class="max-w-3xl mx-auto mt-6 text-slate-300 leading-relaxed">
+                    A comprehensive framework designed to drive healthy competition through transparency, incentivize consistent excellence, and reward high-impact contributions. Anchored by a transparent Weekly Leaderboard and a weighted Composite Score.
+                </p>
+            </div>
         </header>
 
-        <section class="my-12">
-            <h2 class="text-3xl font-bold text-center mb-8">The Awards</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <main class="max-w-7xl mx-auto px-4 py-12 space-y-16">
 
-                <div class="bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center">
-                    <span class="text-6xl mb-4">🏆</span>
-                    <h3 class="text-2xl font-bold mb-2">CSAT Champ Support</h3>
-                    <p class="font-semibold" style="color: #118AB2;">Monthly (L1 & L2)</p>
-                    <p class="mt-2">For the agent with the absolute highest Customer Satisfaction (CSAT) score. Your dedication to customer happiness pays off!</p>
-                </div>
-
-                <div class="bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center">
-                    <span class="text-6xl mb-4">🦸</span>
-                    <h3 class="text-2xl font-bold mb-2">Support Hero</h3>
-                    <p class="font-semibold" style="color: #118AB2;">Monthly (L1 & L2)</p>
-                    <p class="mt-2">For the best all-around performer, calculated on a composite score of CSAT, Ticket Handling, and Quality Score.</p>
-                </div>
-
-                <div class="bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center md:col-span-2 lg:col-span-1">
-                    <span class="text-6xl mb-4">🎼</span>
-                    <h3 class="text-2xl font-bold mb-2">Support Maestro</h3>
-                    <p class="font-semibold" style="color: #118AB2;">Quarterly (L1 & L2)</p>
-                    <p class="mt-2">For sustained high performance. This award uses the same composite score as the Support Hero, averaged over the entire quarter.</p>
-                </div>
-                
-                <div class="bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center">
-                    <span class="text-6xl mb-4">🧙</span>
-                    <h3 class="text-2xl font-bold mb-2">Knowledge Wizard</h3>
-                    <p class="font-semibold" style="color: #118AB2;">Anytime (All)</p>
-                    <p class="mt-2">Awarded for creating or significantly updating a high-quality Knowledge Base (KB) article. Share your wisdom!</p>
-                </div>
-
-                <div class="bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center">
-                    <span class="text-6xl mb-4">✨</span>
-                    <h3 class="text-2xl font-bold mb-2">SPOT Award</h3>
-                    <p class="font-semibold" style="color: #118AB2;">Anytime (All)</p>
-                    <p class="mt-2">For outstanding, above-and-beyond efforts. This can be nominated by anyone on the team and is approved by a manager.</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="my-12 bg-white rounded-lg shadow-md p-6 md:p-8">
-            <h2 class="text-3xl font-bold text-center mb-4">How to Win: The Balanced Scorecard</h2>
-            <p class="text-center max-w-3xl mx-auto mb-8">
-                The 'Support Hero' (Monthly) and 'Support Maestro' (Quarterly) awards are based on a balanced composite score. This ensures we recognize well-rounded performance, not just one metric. Here’s the breakdown:
-            </p>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                <div>
-                    <h3 class="text-2xl font-bold text-center mb-4">Hero & Maestro Score</h3>
-                    <div class="chart-container">
-                        <canvas id="metricsDonut"></canvas>
-                    </div>
-                </div>
-                <div>
-                    <h3 class="text-2xl font-bold text-center mb-4">"Tickets Handling" Metric</h3>
-                    <p class="text-center mb-4">Your "Tickets Handling" score is itself a composite metric, blending volume with efficiency.</p>
-                    <div class="chart-container">
-                        <canvas id="ticketsDonut"></canvas>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="my-12">
-            <h2 class="text-3xl font-bold text-center mb-8">Qualification Is Key: Minimum Requirements</h2>
-            <p class="text-center max-w-3xl mx-auto mb-8">
-                To be eligible for the monthly or quarterly quantitative awards, you must meet these minimum performance gateways for the period. This ensures data accuracy and fair comparison.
-            </p>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-                <div class="bg-white rounded-lg shadow-md p-8">
-                    <p class="text-6xl font-black" style="color: #118AB2;">25+</p>
-                    <p class="text-xl font-bold mt-2">Scored CSAT Responses</p>
-                </div>
-                <div class="bg-white rounded-lg shadow-md p-8">
-                    <p class="text-6xl font-black" style="color: #06D6A0;">100%</p>
-                    <p class="text-xl font-bold mt-2">Of Daily Ticket Volume Target</p>
-                </div>
-                <div class="bg-white rounded-lg shadow-md p-8">
-                    <p class="text-6xl font-black" style="color: #FFD166;">3+</p>
-                    <p class="text-xl font-bold mt-2">Internal Quality Audits</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="my-12">
-            <h2 class="text-3xl font-bold text-center mb-8">How to Win: Anytime Awards Workflow</h2>
-            <p class="text-center max-w-3xl mx-auto mb-8">
-                The 'Knowledge Wizard' and 'SPOT' awards can be earned at any time. Here’s how the process works for each.
-            </p>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                
-                <div>
-                    <h3 class="text-2xl font-bold text-center mb-6">Knowledge Wizard 🧙</h3>
-                    <div class="flex flex-col items-center space-y-2">
-                        <div class="flow-step w-full max-w-sm">
-                            <span class="font-bold">1. Submit Article</span>
-                            <p class="text-sm">You draft and submit a new KB article or significant update.</p>
-                        </div>
-                        <div class="flow-arrow">↓</div>
-                        <div class="flow-step w-full max-w-sm">
-                            <span class="font-bold">2. Review & Audit</span>
-                            <p class="text-sm">The Knowledge Manager or SME reviews it for accuracy, clarity, and value.</p>
-                        </div>
-                        <div class="flow-arrow">↓</div>
-                        <div class="flow-step w-full max-w-sm" style="border-color: #06D6A0; background-color: #f0fdf4;">
-                            <span class="font-bold">3. Publish & Reward!</span>
-                            <p class="text-sm">Once approved and published, you receive the award immediately.</p>
-                        </div>
+            <section>
+                <div class="flex flex-col md:flex-row items-center gap-4 mb-8">
+                    <div class="w-2 h-12 bg-teal-500 rounded"></div>
+                    <div>
+                        <h2 class="text-3xl font-bold text-slate-800">The Core Engine: Composite Scoring Logic</h2>
+                        <p class="text-slate-600">How we measure and drive behavior on the Dedicated Leaderboards.</p>
                     </div>
                 </div>
 
-                <div>
-                    <h3 class="text-2xl font-bold text-center mb-6">SPOT Award ✨</h3>
-                    <div class="flex flex-col items-center space-y-2">
-                        <div class="flow-step w-full max-w-sm">
-                            <span class="font-bold">1. Nominate (G-Form)</span>
-                            <p class="text-sm">Anyone (peer or manager) nominates you via G-Form for outstanding effort.</p>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center bg-white p-8 rounded-2xl card-shadow">
+                    
+                    <div class="space-y-6">
+                        <p class="text-lg text-slate-700 leading-relaxed">
+                            To ensure a balanced approach that values quality without sacrificing efficiency, we utilize a <strong>Weighted Composite Score (out of 100)</strong>. This single metric powers both the Monthly Leaderboard and Quarterly Maestro awards.
+                        </p>
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <span class="text-2xl mr-3">💎</span>
+                                <div>
+                                    <strong class="text-slate-900">Quality First (40%):</strong>
+                                    <span class="text-slate-600">CSAT is the heaviest weight to ensure customer sentiment is never traded for speed.</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-2xl mr-3">🚀</span>
+                                <div>
+                                    <strong class="text-slate-900">Productivity (30%):</strong>
+                                    <span class="text-slate-600">Solved Cases volume drives pure output and resolution throughput.</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-2xl mr-3">⚡</span>
+                                <div>
+                                    <strong class="text-slate-900">Efficiency (20%):</strong>
+                                    <span class="text-slate-600">Time To Resolve (TTR) incentivizes speed and process knowledge.</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-2xl mr-3">📥</span>
+                                <div>
+                                    <strong class="text-slate-900">Queue Hygiene (10%):</strong>
+                                    <span class="text-slate-600">Active Backlog management prevents stagnation of aging tickets.</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="chart-container bg-slate-50 rounded-xl p-4 border border-slate-100">
+                        <canvas id="weightingChart"></canvas>
+                    </div>
+
+                </div>
+            </section>
+
+            <section>
+                <div class="flex flex-col md:flex-row items-center gap-4 mb-8">
+                    <div class="w-2 h-12 bg-blue-600 rounded"></div>
+                    <div>
+                        <h2 class="text-3xl font-bold text-slate-800">Award Tiering Strategy</h2>
+                        <p class="text-slate-600">Structured recognition for different horizons of performance.</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+                    
+                    <div class="bg-white rounded-xl p-6 card-shadow border-t-4 border-blue-600 flex flex-col h-full">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold text-slate-800">Support Leaderboard Top Performer</h3>
+                            <span class="bg-blue-100 text-blue-800 text-xs font-bold px-2 py-1 rounded uppercase">Monthly</span>
                         </div>
-                        <div class="flow-arrow">↓</div>
-                        <div class="flow-step w-full max-w-sm">
-                            <span class="font-bold">2. Manager Review</span>
-                            <p class="text-sm">Your manager reviews the nomination for "above and beyond" impact.</p>
+                        <p class="text-slate-600 text-sm mb-6 flex-grow">
+                            Awarded to the #1 ranked agent on the separate L1 & L2 leaderboards based on the monthly cumulative Composite Score.
+                        </p>
+                        <div class="mt-auto pt-4 border-t border-slate-100">
+                            <p class="text-sm font-semibold text-slate-500">Reward:</p>
+                            <p class="text-blue-700 font-bold">Monetary Reward + Badge</p>
                         </div>
-                        <div class="flow-arrow">↓</div>
-                        <div class="flow-step w-full max-w-sm" style="border-color: #06D6A0; background-color: #f0fdf4;">
-                            <span class="font-bold">3. Approve & Reward!</span>
-                            <p class="text-sm">Approved within 2 business days, and you receive the award.</p>
+                    </div>
+
+                    <div class="bg-white rounded-xl p-6 card-shadow border-t-4 border-amber-500 flex flex-col h-full">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold text-slate-800">Support Maestro</h3>
+                            <span class="bg-amber-100 text-amber-800 text-xs font-bold px-2 py-1 rounded uppercase">Quarterly</span>
+                        </div>
+                        <p class="text-slate-600 text-sm mb-6 flex-grow">
+                            Recognizes consistency over time. The winner is determined by the highest <strong>Average Composite Score</strong> across the 3-month quarter.
+                        </p>
+                        <div class="mt-auto pt-4 border-t border-slate-100">
+                            <p class="text-sm font-semibold text-slate-500">Reward:</p>
+                            <p class="text-amber-600 font-bold">Monetary Reward</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-xl p-6 card-shadow border-t-4 border-teal-500 flex flex-col h-full">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold text-slate-800">Knowledge Wizard</h3>
+                            <span class="bg-teal-100 text-teal-800 text-xs font-bold px-2 py-1 rounded uppercase">Anytime</span>
+                        </div>
+                        <p class="text-slate-600 text-sm mb-6 flex-grow">
+                            Incentivizes documentation and sharing. Triggered upon the publication of a validated, high-quality KB article.
+                        </p>
+                        <div class="mt-auto pt-4 border-t border-slate-100">
+                            <p class="text-sm font-semibold text-slate-500">Reward:</p>
+                            <p class="text-teal-600 font-bold">Monetory Reward</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-xl p-6 card-shadow border-t-4 border-purple-500 flex flex-col h-full">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold text-slate-800">SPOT Award</h3>
+                            <span class="bg-purple-100 text-purple-800 text-xs font-bold px-2 py-1 rounded uppercase">Anytime</span>
+                        </div>
+                        <p class="text-slate-600 text-sm mb-6 flex-grow">
+                            For "Above and Beyond" moments. Nominated by peers/leads via G-Form and approved by managers for specific outstanding efforts.
+                        </p>
+                        <div class="mt-auto pt-4 border-t border-slate-100">
+                            <p class="text-sm font-semibold text-slate-500">Reward:</p>
+                            <p class="text-purple-600 font-bold">Monetory Reward/Gift Cards</p>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <section>
+                <div class="flex flex-col md:flex-row items-center gap-4 mb-8">
+                    <div class="w-2 h-12 bg-amber-500 rounded"></div>
+                    <div>
+                        <h2 class="text-3xl font-bold text-slate-800">Operational Workflow</h2>
+                        <p class="text-slate-600">The cycle of data aggregation, visibility, and reward distribution.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl card-shadow">
+                    <h3 class="text-lg font-bold text-slate-700 mb-6 text-center">Weekly Visibility & Monthly Reward Cycle</h3>
+                    
+                    <div class="flex flex-col md:flex-row justify-between items-center gap-4 relative">
+                        <!-- Connecting Line for Desktop -->
+                        <div class="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-slate-200 -z-0 transform -translate-y-1/2"></div>
+
+                        <div class="relative z-10 bg-white p-4 rounded-lg border-2 border-slate-200 w-full md:w-1/4 text-center">
+                            <div class="text-2xl mb-2">📊</div>
+                            <h4 class="font-bold text-slate-800">Every Monday</h4>
+                            <p class="text-xs text-slate-500">Operations extracts CSAT, TTR, Volume, Backlog data.</p>
+                        </div>
+
+                        <div class="process-arrow hidden md:block">→</div>
+
+                        <div class="relative z-10 bg-white p-4 rounded-lg border-2 border-slate-200 w-full md:w-1/4 text-center">
+                            <div class="text-2xl mb-2">👀</div>
+                            <h4 class="font-bold text-slate-800">Weekly Refresh</h4>
+                            <p class="text-xs text-slate-500">Leaderboard updated for visibility & motivation.</p>
+                        </div>
+
+                        <div class="process-arrow hidden md:block">→</div>
+
+                        <div class="relative z-10 bg-white p-4 rounded-lg border-2 border-slate-200 w-full md:w-1/4 text-center">
+                            <div class="text-2xl mb-2">📅</div>
+                            <h4 class="font-bold text-slate-800">Month End</h4>
+                            <p class="text-xs text-slate-500">Data consolidated. Highest Composite Score identified.</p>
+                        </div>
+
+                        <div class="process-arrow hidden md:block">→</div>
+
+                        <div class="relative z-10 bg-teal-50 p-4 rounded-lg border-2 border-teal-500 w-full md:w-1/4 text-center shadow-lg transform scale-105">
+                            <div class="text-2xl mb-2">🏆</div>
+                            <h4 class="font-bold text-teal-800">Town Hall</h4>
+                            <p class="text-xs text-teal-600">Winners Announced & Bonus Processed.</p>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-        
-        <section class="my-12 bg-white rounded-lg shadow-md p-6 md:p-8">
-            <h2 class="text-3xl font-bold text-center mb-4">The Monthly & Quarterly Process</h2>
-            <p class="text-center max-w-3xl mx-auto mb-8">
-                To ensure fairness and transparency, our automated awards follow a clear 5-day process at the start of each new period.
-            </p>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-                <div class="text-center p-4 rounded-lg" style="background-color: #f0f7ff;">
-                    <p class="text-sm font-bold" style="color: #118AB2;">Day 1</p>
-                    <p class="text-lg font-semibold mt-1">Data Extraction</p>
-                    <p class="text-sm mt-1">Operations pulls all raw KPI data for the previous period.</p>
+            </section>
+
+            <section>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    
+                    <div class="bg-slate-800 text-white p-8 rounded-2xl shadow-xl">
+                        <h3 class="text-2xl font-bold mb-6 flex items-center">
+                            <span class="mr-3 text-amber-400">⚖️</span> Governance & Qualifiers
+                        </h3>
+                        <p class="text-slate-300 mb-8">To ensure statistical relevance and fair play, agents must meet these minimum thresholds to appear on the leaderboard.</p>
+                        
+                        <div class="grid grid-cols-2 gap-6">
+                            <div class="bg-slate-700 p-6 rounded-xl text-center">
+                                <span class="block text-4xl font-bold text-teal-400 mb-2">15</span>
+                                <span class="text-sm uppercase tracking-wide text-slate-400">Min. Working Days</span>
+                            </div>
+                            <div class="bg-slate-700 p-6 rounded-xl text-center">
+                                <span class="block text-4xl font-bold text-teal-400 mb-2">10</span>
+                                <span class="text-sm uppercase tracking-wide text-slate-400">Min. CSAT Responses</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-2xl card-shadow border border-slate-200">
+                        <h3 class="text-2xl font-bold text-slate-800 mb-6">Target Index Calculation</h3>
+                        <p class="text-slate-600 mb-6">We use a fair indexing method to combine metrics with different units (Time vs. Count vs. Score).</p>
+                        
+                        <div class="space-y-4">
+                            <div class="bg-slate-50 p-4 rounded-lg border-l-4 border-blue-500">
+                                <p class="text-xs font-bold text-slate-400 uppercase mb-1">Higher is Better (CSAT, Volume)</p>
+                                <code class="text-slate-800 font-mono text-sm block">(Actual / Target) × Weight</code>
+                            </div>
+                            <div class="bg-slate-50 p-4 rounded-lg border-l-4 border-amber-500">
+                                <p class="text-xs font-bold text-slate-400 uppercase mb-1">Lower is Better (TTR, Backlog)</p>
+                                <code class="text-slate-800 font-mono text-sm block">(Target / Actual) × Weight</code>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="text-center p-4 rounded-lg" style="background-color: #f0f7ff;">
-                    <p class="text-sm font-bold" style="color: #118AB2;">Day 2</p>
-                    <p class="text-lg font-semibold mt-1">Calculation</p>
-                    <p class="text-sm mt-1">Composite scores are calculated and leaderboards are generated.</p>
-                </div>
-                <div class="text-center p-4 rounded-lg" style="background-color: #f0f7ff;">
-                    <p class="text-sm font-bold" style="color: #118AB2;">Day 3</p>
-                    <p class="text-lg font-semibold mt-1">Verification</p>
-                    <p class="text-sm mt-1">Managers vet the top candidates for qualification and quality.</p>
-                </div>
-                <div class="text-center p-4 rounded-lg" style="background-color: #f0f7ff;">
-                    <p class="text-sm font-bold" style="color: #118AB2;">Day 4</p>
-                    <p class="text-lg font-semibold mt-1">Final Approval</p>
-                    <p class="text-sm mt-1">The Support Manager signs off on the final list of winners.</p>
-                </div>
-                <div class="text-center p-4 rounded-lg" style="background-color: #d6fdee; border: 2px solid #06D6A0;">
-                    <p class="text-sm font-bold" style="color: #047857;">Day 5</p>
-                    <p class="text-lg font-semibold mt-1">Announcement!</p>
-                    <p class="text-sm mt-1">Winners are announced, and rewards are processed.</p>
-                </div>
-            </div>
-        </section>
-        
-        <footer class="text-center my-12">
-            <p class="text-2xl font-bold" style="color: #073B4C;">Strive for Excellence!</p>
-            <p class="text-base mt-2">If you have any questions, please reach out to your manager.</p>
+            </section>
+
+        </main>
+
+        <footer class="bg-slate-900 text-slate-400 py-8 text-center border-t border-slate-800 mt-12">
+            <p class="text-sm">Confidential Internal Document • Reward & Recognition Strategy</p>
         </footer>
 
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const chartColors = {
-                blue: '#118AB2',
-                green: '#06D6A0',
-                yellow: '#FFD166',
-                red: '#FF6B6B',
-                darkBlue: '#073B4C'
+        document.addEventListener('DOMContentLoaded', function() {
+            // Chart.js Configuration
+            const ctx = document.getElementById('weightingChart').getContext('2d');
+            
+            // Explicitly handling label wrapping (though these are short)
+            const labels = [
+                'CSAT (Quality)', 
+                'Solved Cases (Vol)', 
+                'TTR (Efficiency)', 
+                'Active Backlog'
+            ];
+
+            const data = {
+                labels: labels,
+                datasets: [{
+                    label: 'Metric Weighting',
+                    data: [40, 30, 20, 10],
+                    backgroundColor: [
+                        '#1e3a8a', // Blue-900 for CSAT
+                        '#14b8a6', // Teal-500 for Volume
+                        '#f59e0b', // Amber-500 for TTR
+                        '#f43f5e'  // Rose-500 for Backlog
+                    ],
+                    borderWidth: 0,
+                    hoverOffset: 4
+                }]
             };
 
-            const tooltipTitleCallback = (tooltipItems) => {
-                const item = tooltipItems[0];
-                let label = item.chart.data.labels[item.dataIndex];
-                if (Array.isArray(label)) {
-                    return label.join(' ');
-                } else {
-                    return label;
-                }
-            };
-
-            const commonOptions = {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        position: 'bottom',
-                    },
-                    tooltip: {
-                        callbacks: {
-                            title: tooltipTitleCallback
+            const config = {
+                type: 'doughnut',
+                data: data,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                padding: 20,
+                                font: {
+                                    family: "'Segoe UI', sans-serif",
+                                    size: 12
+                                },
+                                color: '#334155'
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                title: function(tooltipItems) {
+                                    const item = tooltipItems[0];
+                                    let label = item.chart.data.labels[item.dataIndex];
+                                    if (Array.isArray(label)) {
+                                        return label.join(' ');
+                                    } else {
+                                        return label;
+                                    }
+                                }
+                            },
+                            backgroundColor: 'rgba(30, 41, 59, 0.9)',
+                            padding: 12
                         }
-                    }
+                    },
+                    cutout: '65%'
                 }
             };
 
-            const ctxMetrics = document.getElementById('metricsDonut').getContext('2d');
-            new Chart(ctxMetrics, {
-                type: 'doughnut',
-                data: {
-                    labels: ['CSAT (50%)', 'Tickets Handling (30%)', 'Quality Score (20%)'],
-                    datasets: [{
-                        label: 'Metric Weighting',
-                        data: [50, 30, 20],
-                        backgroundColor: [
-                            chartColors.blue,
-                            chartColors.green,
-                            chartColors.yellow
-                        ],
-                        hoverOffset: 4
-                    }]
-                },
-                options: commonOptions
-            });
-
-            const ctxTickets = document.getElementById('ticketsDonut').getContext('2d');
-            new Chart(ctxTickets, {
-                type: 'doughnut',
-                data: {
-                    labels: ['Solved Tickets Volume (60%)', 'FCR Rate (40%)'],
-                    datasets: [{
-                        label: 'Tickets Handling Breakdown',
-                        data: [60, 40],
-                        backgroundColor: [
-                            chartColors.blue,
-                            chartColors.green
-                        ],
-                        hoverOffset: 4
-                    }]
-                },
-                options: commonOptions
-            });
+            new Chart(ctx, config);
         });
     </script>
-
 </body>
 </html>
